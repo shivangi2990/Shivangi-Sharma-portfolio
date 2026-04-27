@@ -1,0 +1,134 @@
+.skills {
+  background: var(--bg2);
+  overflow: hidden;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.5px;
+  margin-bottom: 4rem;
+}
+
+/* animate cards in */
+.grid .card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease,
+    background var(--transition-mid);
+}
+
+.gridVisible .card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CARD */
+.card {
+  background: var(--bg3);
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+
+.cardActive {
+  background: var(--bg4) !important;
+}
+
+.cardInner {
+  padding: 2rem 2rem 2.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+.cardIndex {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted-dark);
+  letter-spacing: 0.12em;
+  margin-bottom: 1rem;
+}
+
+.catTitle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 1.25rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 0.3rem 0.75rem;
+  border: 0.5px solid var(--border);
+  color: var(--muted);
+  background: transparent;
+  transition: all var(--transition-fast);
+  letter-spacing: 0.03em;
+}
+
+.cardActive .tag {
+  border-color: rgba(200, 245, 100, 0.25);
+  color: var(--text);
+}
+
+/* LEFT ACCENT BAR */
+.cardBorder {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.35s ease;
+}
+
+.cardActive .cardBorder {
+  transform: scaleY(1);
+}
+
+/* MARQUEE */
+.marqueeWrap {
+  overflow: hidden;
+  border-top: 0.5px solid var(--border);
+  padding: 1.25rem 0;
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.marqueeItem {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted-dark);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0 2rem;
+  border-right: 0.5px solid var(--border);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.marqueeWrap:hover .marqueeTrack {
+  animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
+
+/* ─── RESET & BASE ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:          #0a0a0a;
+  --bg2:         #111111;
+  --bg3:         #1a1a1a;
+  --bg4:         #1f1f1f;
+  --border:      rgba(255, 255, 255, 0.08);
+  --border-md:   rgba(255, 255, 255, 0.13);
+  --border-hi:   rgba(255, 255, 255, 0.20);
+  --text:        #f0ede8;
+  --muted:       #888880;
+  --muted-dark:  #555550;
+  --accent:      #c8f564;
+  --accent-dim:  rgba(200, 245, 100, 0.08);
+  --accent-glow: rgba(200, 245, 100, 0.3);
+  --accent2:     #64c8f5;
+  --accent2-dim: rgba(100, 200, 245, 0.15);
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+  --font-body:    'DM Sans', sans-serif;
+
+  --transition-fast: 0.15s ease;
+  --transition-mid:  0.25s ease;
+  --transition-slow: 0.45s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+strong {
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: var(--bg); }
+::-webkit-scrollbar-thumb  { background: var(--bg3); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted-dark); }
+
+/* ─── SELECTION ─── */
+::selection {
+  background: var(--accent);
+  color: #0a0a0a;
+}
+
+/* ─── KEYFRAMES ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.25; transform: scaleY(1);    }
+  50%       { opacity: 1;    transform: scaleY(0.45); }
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* ─── SECTION BASE ─── */
+.section {
+  padding: 7rem 3rem;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: var(--border);
+  max-width: 240px;
+}
+
+/* ─── UTILITY ─── */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .section { padding: 5rem 1.5rem; }
+}
